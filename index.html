@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Trivia Defense</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla de inicio -->
+        <div id="startScreen" class="screen active">
+            <div class="start-content">
+                <h1 class="title">🧟 ZOMBIE TRIVIA DEFENSE 🧟</h1>
+                <p class="subtitle">¿Sabes suficiente para sobrevivir?</p>
+                <div class="instructions">
+                    <h2>Instrucciones:</h2>
+                    <ul>
+                        <li>Responde preguntas de cultura general correctamente</li>
+                        <li>Cada acierto: +100 recursos 🏗️ y +10 vida ❤️</li>
+                        <li>Cada error: -50 recursos 🏗️ y -20 vida ❤️</li>
+                        <li>Construye defensas contra los zombies</li>
+                        <li>¡No dejes que tu vida llegue a 0!</li>
+                    </ul>
+                </div>
+                <button onclick="startGame()" class="btn-start">COMENZAR JUEGO</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de juego -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="stat-label">VIDA</span>
+                        <span id="lifePoints" class="stat-value">100</span>
+                        <div class="health-bar">
+                            <div id="healthFill" class="health-fill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">RECURSOS</span>
+                        <span id="resources" class="stat-value">500</span>
+                        <span class="stat-icon">🏗️</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">PREGUNTA</span>
+                        <span id="questionNumber" class="stat-value">1/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <!-- Zona de defensa -->
+                <div class="defense-zone">
+                    <h3>Tu Base Defensiva</h3>
+                    <div id="defenseDisplay" class="defense-display">
+                        <div class="defense-item">
+                            <span class="defense-icon">🛡️</span>
+                            <span id="wallCount" class="defense-count">0</span>
+                            <span class="defense-name">Muros</span>
+                        </div>
+                        <div class="defense-item">
+                            <span class="defense-icon">🏹</span>
+                            <span id="towerCount" class="defense-count">0</span>
+                            <span class="defense-name">Torres</span>
+                        </div>
+                        <div class="defense-item">
+                            <span class="defense-icon">⚡</span>
+                            <span id="trapCount" class="defense-count">0</span>
+                            <span class="defense-name">Trampas</span>
+                        </div>
+                    </div>
+                    <div class="build-section">
+                        <button onclick="buildWall()" class="btn-build">Construir Muro (-50)</button>
+                        <button onclick="buildTower()" class="btn-build">Construir Torre (-100)</button>
+                        <button onclick="buildTrap()" class="btn-build">Poner Trampa (-75)</button>
+                    </div>
+                </div>
+
+                <!-- Zona de preguntas -->
+                <div class="quiz-zone">
+                    <div id="questionContainer" class="question-container">
+                        <h2 id="questionText" class="question"></h2>
+                        <div id="answersContainer" class="answers-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Game Over -->
+        <div id="gameOverScreen" class="screen">
+            <div class="game-over-content">
+                <h1 id="gameOverTitle" class="game-over-title">JUEGO TERMINADO</h1>
+                <div class="stats-final">
+                    <div class="stat-final">
+                        <span class="label">Vida Final</span>
+                        <span id="finalLife" class="value">0</span>
+                    </div>
+                    <div class="stat-final">
+                        <span class="label">Recursos Acumulados</span>
+                        <span id="finalResources" class="value">0</span>
+                    </div>
+                    <div class="stat-final">
+                        <span class="label">Preguntas Acertadas</span>
+                        <span id="finalCorrect" class="value">0</span>
+                    </div>
+                    <div class="stat-final">
+                        <span class="label">Defensas Construidas</span>
+                        <span id="finalDefenses" class="value">0</span>
+                    </div>
+                </div>
+                <button onclick="location.reload()" class="btn-restart">JUGAR DE NUEVO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
